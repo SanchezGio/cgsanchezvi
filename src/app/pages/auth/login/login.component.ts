@@ -38,8 +38,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     let data: AuthenticationRequest = {
-      UserName: String(this.loginForm.baseForm.get('username').value),
-      Password: String(this.loginForm.baseForm.get('password').value),
+      username: String(this.loginForm.baseForm.get('username').value),
+      password: String(this.loginForm.baseForm.get('password').value),
     }
     //const formValue = this.loginForm.baseForm.value;
     debugger
@@ -61,3 +61,4 @@ export class LoginComponent implements OnInit, OnDestroy {
     return this.loginForm.isValidField(field);
   }
 }
+

@@ -1,4 +1,4 @@
 export class AuthenticationRequest{
-    UserName:string;
-    Password:string;
+    username:string;
+    password:string;
 }
