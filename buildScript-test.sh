@@ -1,2 +1,3 @@
-yarn add npm-install-global
-npm build --base-href
+npm install -g @angular/cli
+npm install
+ng build
