@@ -21,11 +21,9 @@ export class TokenServiceService {
   setJwt(token: UserInfo) {
     this.tokenJwt = token.token;
     let info = new InfoToken();
-    info.userId = token.Id;
-    info.userFullName = token.Names + ' ' + token.Surnames;
-    info.userNet = token.user_name;
+    info.userFullName = token.nombre;
+    info.userNet = token.username;
     //info.expirationDate = new Date(token.expires_in * 1000);
-    info.userDoc=token.DocNumber;
     this.infoToken=info;
     this.cookie.set('Token', token.token);
   }

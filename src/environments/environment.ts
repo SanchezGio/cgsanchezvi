@@ -14,7 +14,7 @@ export const environment = {
     Dtap: "Dev", //Development-Test-Acceptance-Production
   },
   AppConnections: {
-    AuthOnpremisesDev:  "https://localhost:44335/",
+    AuthOnpremisesDev:  "http://localhost:8080/",
   },
 Url(name){
   return environment.AppConnections[name+environment.AppSettings.Environment+environment.AppSettings.Dtap]

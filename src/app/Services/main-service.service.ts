@@ -37,6 +37,7 @@ export class MainServiceService {
     let args=arguments;
     jwt?this.setHeaders(): new HttpHeaders({'Content-Type': 'application/json'});
     this.loadService.loading(true);
+    console.log("Url: ",environment.Url(name) + method)
     return this.http.post<UserResponse>(
       environment.Url(name) + method,
       data,
