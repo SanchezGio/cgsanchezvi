@@ -62,6 +62,7 @@ export class MainServiceService {
 
 
   logout(): void {
+    localStorage.removeItem('islogged');
     localStorage.removeItem('user');
     this.user.next(null);
     this.router.navigate(['/login']);
