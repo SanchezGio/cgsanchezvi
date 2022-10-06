@@ -45,3 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 API/node_modules/*
+
+#Readme
+README.md
