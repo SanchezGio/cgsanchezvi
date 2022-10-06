@@ -48,13 +48,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.mainSvc.executeMethod('Auth', 'Login',data,false).subscribe((rta) => {
         debugger
       if (rta.error===0) {
+        localStorage.setItem('islogged','SI')
         this.auth.login(rta.values.token);
         this.router.navigate(["/home"]);
       }else {
+        localStorage.setItem('islogged','NO')
         this.mainSvc.openSnackBar("Error",rta.message);
       } 
       })
     );
+    console.log("islogged ",localStorage.getItem('islogged'))
   }
 
   checkField(field: string): boolean {

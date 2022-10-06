@@ -10,6 +10,7 @@ import { HeaderComponent } from '@shared/components/header/header.component';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 import { MaterialModule } from '@app/material.module';
 import { SidebarModule } from '@shared/components/sidebar/sidebar.module';
+import { MenuPicModule } from './shared/components/menu-pic/menu-pic.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
@@ -25,6 +26,7 @@ import { LoginActivate } from 'src/app/shared/guards/login-active.guard';
     BrowserAnimationsModule,
     MaterialModule,
     SidebarModule,
+    MenuPicModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,

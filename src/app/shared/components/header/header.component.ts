@@ -18,7 +18,7 @@ import { Roles } from '@app/shared/models/user.interface';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isAdmin = null;
-  isLogged = false;
+  isLogged = true;
 
   private destroy$ = new Subject<any>();
 
@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((user: UserResponse) => {
         debugger
-        this.isLogged = true;
         this.isAdmin = user?.role;
       });
   }
