@@ -5,4 +5,4 @@
 #COPY . /app
 #Paso dos copiar compilado al docker final
 FROM tomcat:10.0.26-jre8
-COPY PICWeb/picweb /usr/local/tomcat/webapps/picweb
+COPY picweb/picweb /usr/local/tomcat/webapps/picweb
