@@ -20,8 +20,8 @@ spec:
         - name: picweb
           image: imagekeyword
           ports:
-            - name: 80tcp01
-              containerPort: 5000
+            - name: tcp01
+              containerPort: 4200
               protocol: TCP
           resources:
             limits:
@@ -53,26 +53,5 @@ spec:
       maxSurge: 1
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: picweb
-  namespace: pic
-spec:
-  internalTrafficPolicy: Cluster
-  ipFamilies:
-  - IPv4
-  ipFamilyPolicy: SingleStack
-  ports:
-  - name: http
-    port: 5000
-    protocol: TCP
-    targetPort: 5000
-  selector:
-    app: picweb
-  sessionAffinity: None
-  type: ClusterIP
 
 
