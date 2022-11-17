@@ -6,4 +6,4 @@
 #Paso dos copiar compilado al docker final
 FROM tomcat:10.0.26-jre8
 COPY picweb/PicWeb /usr/local/tomcat/webapps/picweb
-EXPOSE 5000
+EXPOSE 4200
