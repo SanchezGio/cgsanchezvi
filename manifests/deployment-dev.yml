@@ -21,7 +21,7 @@ spec:
           image: imagekeyword
           ports:
             - name: tcp01
-              containerPort: 4200
+              containerPort: 8080
               protocol: TCP
           resources:
             limits:
@@ -66,9 +66,9 @@ spec:
   ipFamilyPolicy: SingleStack
   ports:
   - name: http
-    port: 4200
+    port: 8080
     protocol: TCP
-    targetPort: 4200
+    targetPort: 8080
   selector:
     app: picweb
   sessionAffinity: None
