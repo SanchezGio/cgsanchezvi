@@ -53,5 +53,23 @@ spec:
       maxSurge: 1
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
-
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: picweb
+  namespace: pic
+spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 4200
+    protocol: TCP
+    targetPort: 4200
+  selector:
+    app: picweb
+  sessionAffinity: None
+  type: ClusterIP
