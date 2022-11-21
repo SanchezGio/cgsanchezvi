@@ -1,31 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: picweb
-  namespace: pic
+  name: capacitacion-devops
   labels:
     cattle.io/creator: norman
-    app: picweb
-spec: 
+    app: capacitacion-devops
+spec:
   replicas: 1
   selector:
     matchLabels:
-      app: picweb
+      app: capacitacion-devops
   template:
     metadata:
       labels:
-        app: picweb
+        app: capacitacion-devops
     spec:
       containers:
-        - name: picweb
+        - name: capacitacion-devops
           image: imagekeyword
           ports:
-            - name: tcp01
-              containerPort: 8080
+            - name: 80tcp01
+              containerPort: 443
               protocol: TCP
+          env:
+            - name: TZ
+              value: utc+5
           resources:
             limits:
-              cpu: "1" 
+              cpu: "1"
               memory: 500Mi
             requests:
               cpu: 100m
@@ -53,12 +55,13 @@ spec:
       maxSurge: 1
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: picweb
-  namespace: pic
+  name: capacitacion-devops
+  namespace: default
 spec:
   internalTrafficPolicy: Cluster
   ipFamilies:
@@ -68,8 +71,47 @@ spec:
   - name: http
     port: 8080
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   selector:
-    app: picweb
+    app: capacitacion-devops
   sessionAffinity: None
   type: ClusterIP
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: capacitacion-devops
+  namespace: default
+spec:
+  defaultBackend:
+    service:
+      name: capacitacion-devops
+      port:
+        number: 8080
+  rules:
+  - host: proeyecto1.labdevops.nh.inet
+    http:
+      paths:
+      - backend:
+          service:
+            name: capacitacion-devops
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - proeyecto1.labdevops.nh.inet
+    secretName: certdevops
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: capacitacion-devops
+  namespace: default
+data:
+  VARIABLE: CONTENIDO
